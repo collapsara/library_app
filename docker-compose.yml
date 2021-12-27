@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  library_app:
+    build: library/.
+    volumes:
+      - ./library/library_app:/home/library_app/
+    ports:
+      - "8000:8000"
+    command:
+      ["./run_app.sh"]
+    env_file: 
+      - .env
+    depends_on:
+      - postgres
+
+volumes:
+  pgadmin:
